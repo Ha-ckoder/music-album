@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		h2.dil{
+
+			text-align: center;
+			font-size: 120;
+			color: 
+		}
+		body{
+			background-color: black;
+      background-image: url('http://www.hdwallpaperscool.com/wp-content/uploads/2013/10/best-animated-hd-wallpaper-image.jpg');
+		}
+    div{
+      text-align: center;
+    }
+	</style>
+  <title>Hangman</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <button type="button" class="btn btn-success">start game</button>
+<script>
+var i=0;
+    var list = ["inception","spy","godfather"];
+    var num=Math.floor(Math.random() * list.length );
+    console.log(num);
+    var toguess=list[num];
+    console.log(toguess);
+
+    var guessed=[],let;
+    var set=[],chan=6;
+
+    document.querySelector("button.btn.btn-success").addEventListener("click",start,false);
+
+function start()
+{
+    console.log("asd");
+    for(i=0;i<toguess.length;i++)
+    {
+      if(toguess[i]!='a'&&toguess[i]!='e'&&toguess[i]!='i'&&toguess[i]!='o'&&toguess[i]!='u') 
+      guessed[i]='_';
+      else
+        guessed[i]=toguess[i];
+  }
+  document.getElementById('bod').innerHTML=guessed;
+}
+
+function onguess()
+{
+  var t;
+  
+
+  
+  set.push(let);
+    for(i=t=0;i<toguess.length;i++)
+    {
+      if(let==toguess[i])
+        {
+          guessed[i]=let;
+          t=1;
+          document.getElementById('bod').innerHTML=guessed;
+        }
+
+    }
+    if(toguess==guessed)
+      alert('you win');
+    if(t!=1)
+
+      {
+        alert('wrong guess');
+        chan--;
+        if(chan==0)
+        {
+          alert('game over');
+        }
+      }
+  
+  
+  
+}
+function myKeyPress(e){
+
+            var keynum;
+
+            if(window.event){ // IE         
+              keynum = e.keyCode;
+            }else
+                if(e.which){ // Netscape/Firefox/Opera          
+                keynum = e.which;
+                 }
+            let=String.fromCharCode(keynum);
+            onguess();
+        }
+</script>
+<p id="bod">
+  </p>
+  
+ <input type="text" onkeypress="myKeyPress(event)">
+ 
+</body>
+</html>
